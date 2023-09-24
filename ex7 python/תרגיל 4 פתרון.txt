@@ -1,0 +1,26 @@
+def rickode(in_file):
+    f = open(in_file, 'r')
+    s = f.read()
+    rep_str = ''
+    for letter in s:
+            if letter.isalpha() == True:
+                if letter == "y":
+                    rep_str += "a"
+                elif letter == "Y":
+                    rep_str += "A"
+                elif letter == "Z":
+                    rep_str += "B"
+                elif letter == "z":
+                    rep_str += "b"
+                else:
+                    code = ord(letter)
+                    nxt_letter = chr(code + 2)
+                    rep_str = rep_str + nxt_letter
+            else:
+                rep_str += letter
+    f.close()
+    name_of_new = in_file[:str.rfind(in_file, ".")] + "_decipherick" + in_file[str.rfind(in_file, "."):]
+    w = open(name_of_new, 'w')
+    w.write(rep_str)
+    w.close()
+    return name_of_new
